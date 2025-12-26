@@ -1,0 +1,34 @@
+python3.10 custom_trajectory.py
+
+to run forest simulation 
+
+1)spawn env : 
+export GZ_SIM_RESOURCE_PATH=$HOME/Documents/ARMY_PROJECT/PX4-Autopilot/Tools/simulation/gz/models
+gz sim ~/Documents/ARMY_PROJECT/PX4-Autopilot/Tools/simulation/gz/worlds/forest.sdf
+2) spawn drone:
+ make px4_sitl gz_x500_(depends) none
+
+3) to check gz topic list  :
+ gz topic -l
+
+4)or run togehter ; make px4_sitl gz_x500_depth   PX4_GZ_WORLD=forest
+5)to establiish bridge : ros2 run ros_gz_image image_bridge \
+/world/forest/model/x500_depth_0/link/camera_link/sensor/IMX214/image \
+/camera/image_raw
+
+5) to run camera feed: ros2 run ros_gz_image image_bridge \
+/world/forest/model/x500_depth_0/link/camera_link/sensor/IMX214/image \
+/camera/image_raw
+
+
+ros2 topic list
+ros2 topic hz /camera/image_raw
+ros2 run rqt_image_view rqt_image_view
+
+
+YOLO SETUP:
+cd ~/ros2_ws
+colcon build --symlink-install --packages-select yolov8_ros
+source install/setup.bash
+
+ros2 run yolov8_ros yolov8_node
