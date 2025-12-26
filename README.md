@@ -2,6 +2,9 @@
 
 This project demonstrates **human detection in a PX4–Gazebo simulation environment** using **YOLOv8**.
 A simulated multirotor equipped with a camera flies in a **forest world**, streams images through a **Gazebo–ROS2 bridge**, and performs real-time human detection using a YOLOv8 ROS2 node.
+<p align="center">
+  <img src="Simulation_picture.jpeg" width="800">
+</p>
 
 ---
 
